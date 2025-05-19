@@ -1,6 +1,5 @@
 import { Alert } from "./alert-component";
-import { createContext, ReactNode, useEffect, useState } from "react";
-import { setShowAlertFunction } from "./alert-service";
+import { createContext, ReactNode, useState } from "react";
 import { AlertContextType, AlertProviderProps } from "./types";
 import { v4 as uuidv4 } from "uuid";
 import styled from "styled-components";
@@ -77,7 +76,7 @@ export const AlertProvider = ({ children }: AlertProviderProps) => {
 
     setTimeout(() => {
       setAlerts((prevAlerts) => prevAlerts.filter((alert) => alert.id !== id));
-    }, 5000);
+    }, 3000);
 
     return id;
   };
@@ -98,10 +97,6 @@ export const AlertProvider = ({ children }: AlertProviderProps) => {
   const removeAlert = (id: string) => {
     setAlerts((prevAlerts) => prevAlerts.filter((alert) => alert.id !== id));
   };
-
-  useEffect(() => {
-    setShowAlertFunction(showAlert);
-  }, []);
 
   // Group alerts by position
   const positionGroups = {

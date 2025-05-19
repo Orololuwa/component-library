@@ -60,11 +60,11 @@ const AlertHeading = styled.h6<{ $variant: AlertVariant }>`
 // Styled close button
 const CloseButton = styled.button<{ $variant: AlertVariant }>`
   background: transparent;
-  color: ${({ $variant }) => ($variant === "upload" ? "#374151" : "white")}
+  color: ${({ $variant }) => ($variant === "upload" ? "#374151" : "white")};
   font-weight: 700;
   transition: all 0.2s ease-in-out;
   padding: 2.5px 5px;
-  
+
   &:hover {
     transform: scale(1.05);
   }
