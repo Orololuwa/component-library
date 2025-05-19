@@ -1,5 +1,7 @@
+import useAlert from "./modules/alert/use-alert";
 import "./styles/index.css";
 
 export { Provider } from "./provider";
-export { Label } from "./components/label";
-export { Input } from "./components/input";
+
+export { Typography } from "./components/typography";
+export { useAlert };
