@@ -20,7 +20,9 @@ const ModalContainer = styled.div<ModalContainerProps>`
   left: 50%;
   transform: translate(-50%, -50%)
     scale(${({ $isOpen }) => ($isOpen ? 1 : 0.95)});
-  background: white;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
   border-radius: 8px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -31,6 +33,11 @@ const ModalContainer = styled.div<ModalContainerProps>`
   visibility: ${({ $isOpen }) => ($isOpen ? "visible" : "hidden")};
   transition: all 0.3s ease-in-out;
   z-index: 1000;
+
+  @media (prefers-color-scheme: light) {
+    color: #213547;
+    background-color: #ffffff;
+  }
 `;
 
 const Overlay = styled.div<{ $isOpen: boolean }>`
@@ -39,11 +46,16 @@ const Overlay = styled.div<{ $isOpen: boolean }>`
   left: 0;
   right: 0;
   bottom: 0;
+  color-scheme: light dark;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
   opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
   visibility: ${({ $isOpen }) => ($isOpen ? "visible" : "hidden")};
   transition: opacity 0.3s ease-in-out;
+
+  @media (prefers-color-scheme: dark) {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
 `;
 
 const ModalContent = styled.div`
@@ -67,7 +79,6 @@ const ModalBody = styled.div`
 const ModalFooter = styled.footer`
   padding: 1rem;
   border-top: 1px solid #eee;
-  background: white;
 `;
 
 const CloseButton = styled.button`
