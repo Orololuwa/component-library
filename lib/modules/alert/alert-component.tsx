@@ -64,6 +64,7 @@ const CloseButton = styled.button<{ $variant: AlertVariant }>`
   font-weight: 700;
   transition: all 0.2s ease-in-out;
   padding: 2.5px 5px;
+  border: none;
 
   &:hover {
     transform: scale(1.05);
