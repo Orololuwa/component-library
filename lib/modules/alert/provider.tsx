@@ -1,4 +1,4 @@
-import { Alert } from "./alert-component";
+import { Alert } from "./component";
 import { createContext, ReactNode, useState } from "react";
 import { AlertContextType, AlertProviderProps } from "./types";
 import { v4 as uuidv4 } from "uuid";

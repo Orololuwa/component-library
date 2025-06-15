@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { AlertProps } from "./alert-provider";
+import { AlertProps } from "./provider";
 
 export interface AlertContextType {
   showAlert: (

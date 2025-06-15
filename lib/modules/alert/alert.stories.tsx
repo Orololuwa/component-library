@@ -1,16 +1,39 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Alert } from "./alert-component";
-import { AlertProvider } from "./alert-provider";
+import { Alert } from "./component";
+import { AlertProvider } from "./provider";
 import useAlert from "./use-alert";
 import React from "react";
 
-// Meta configuration for the Alert stories
 const meta: Meta = {
   title: "Components/Alert",
   component: Alert,
   decorators: [(Story) => <AlertProvider>{Story()}</AlertProvider>],
   parameters: {
     layout: "centered",
+  },
+  argTypes: {
+    variant: {
+      control: "select",
+      options: ["success", "error", "warning", "info", "upload"],
+      defaultValue: "info",
+      description: "Alert variant style",
+    },
+    position: {
+      control: "select",
+      options: ["top-right", "top-left", "bottom-right", "bottom-left"],
+      defaultValue: "top-right",
+      description: "Alert position on screen",
+    },
+    dismissible: {
+      control: "boolean",
+      defaultValue: false,
+      description: "Whether alert can be manually dismissed",
+    },
+    message: {
+      control: "text",
+      defaultValue: "This is an alert message",
+      description: "Alert message content",
+    },
   },
 };
 
@@ -19,126 +42,95 @@ export default meta;
 type Story = StoryObj<typeof Alert>;
 
 // Demo component to showcase alert functionality
-const AlertDemo = () => {
+const AlertDemo = ({ message, variant, position, dismissible }: any) => {
   const { showAlert } = useAlert();
 
+  React.useEffect(() => {
+    showAlert(message, variant, dismissible, position);
+  }, [message, variant, position, dismissible]);
+
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+    <div style={{ padding: "20px" }}>
+      <h3>Current Configuration:</h3>
+      <ul>
+        <li>Message: {message}</li>
+        <li>Variant: {variant}</li>
+        <li>Position: {position}</li>
+        <li>Dismissible: {dismissible ? "Yes" : "No"}</li>
+      </ul>
       <button
-        onClick={() =>
-          showAlert("Success message!", "success", true, "top-right")
-        }
+        onClick={() => showAlert(message, variant, dismissible, position)}
       >
-        Show Success Alert
-      </button>
-      <button
-        onClick={() => showAlert("Error message!", "error", true, "top-left")}
-      >
-        Show Error Alert
-      </button>
-      <button
-        onClick={() =>
-          showAlert("Warning message!", "warning", true, "bottom-right")
-        }
-      >
-        Show Warning Alert
-      </button>
-      <button
-        onClick={() => showAlert("Info message!", "info", true, "bottom-left")}
-      >
-        Show Info Alert
-      </button>
-      <button
-        onClick={() =>
-          showAlert("Upload in progress...", "upload", true, "top-right")
-        }
-      >
-        Show Upload Alert
-      </button>
-      <button
-        onClick={() =>
-          showAlert("Auto-dismiss after 3s", "info", false, "top-right")
-        }
-      >
-        Show Auto-dismiss Alert
+        Show Alert Again
       </button>
     </div>
   );
 };
 
-// Basic story with all alert variants
-export const Default: Story = {
-  render: () => <AlertDemo />,
+// Template for all stories
+const Template: Story = {
+  render: (args) => <AlertDemo {...args} />,
 };
 
-// Individual variant stories
-export const Success: Story = {
-  render: () => (
-    <Alert variant="success" onClose={() => {}}>
-      Success message!
-    </Alert>
-  ),
-};
-
-export const Error: Story = {
-  render: () => (
-    <Alert variant="error" onClose={() => {}}>
-      Error message!
-    </Alert>
-  ),
-};
-
-export const Warning: Story = {
-  render: () => (
-    <Alert variant="warning" onClose={() => {}}>
-      Warning message!
-    </Alert>
-  ),
-};
-
-export const Info: Story = {
-  render: () => (
-    <Alert variant="info" onClose={() => {}}>
-      Info message!
-    </Alert>
-  ),
-};
-
-export const Upload: Story = {
-  render: () => (
-    <Alert variant="upload" onClose={() => {}}>
-      Upload in progress...
-    </Alert>
-  ),
-};
-
-// Story demonstrating auto-dismiss functionality
-export const AutoDismiss: Story = {
-  render: () => {
-    const AutoDismissDemo = () => {
-      const { showAlert } = useAlert();
-      React.useEffect(() => {
-        showAlert("I will disappear in 3 seconds!", "info");
-      }, []);
-      return null;
-    };
-    return <AutoDismissDemo />;
+// Default story with controls
+export const Default = {
+  ...Template,
+  args: {
+    message: "This is a default alert",
+    variant: "info",
+    position: "top-right",
+    dismissible: false,
   },
 };
 
-// Story demonstrating different positions
-export const DifferentPositions: Story = {
-  render: () => {
-    const PositionsDemo = () => {
-      const { showAlert } = useAlert();
-      React.useEffect(() => {
-        showAlert("Top Right Alert", "success", true, "top-right");
-        showAlert("Top Left Alert", "error", true, "top-left");
-        showAlert("Bottom Right Alert", "warning", true, "bottom-right");
-        showAlert("Bottom Left Alert", "info", true, "bottom-left");
-      }, []);
-      return null;
-    };
-    return <PositionsDemo />;
+// Preset configurations
+export const SuccessAlert = {
+  ...Template,
+  args: {
+    message: "Operation completed successfully!",
+    variant: "success",
+    position: "top-right",
+    dismissible: true,
+  },
+};
+
+export const ErrorAlert = {
+  ...Template,
+  args: {
+    message: "An error occurred!",
+    variant: "error",
+    position: "top-right",
+    dismissible: true,
+  },
+};
+
+export const WarningAlert = {
+  ...Template,
+  args: {
+    message: "Warning: This action cannot be undone",
+    variant: "warning",
+    position: "bottom-left",
+    dismissible: true,
+  },
+};
+
+export const UploadAlert = {
+  ...Template,
+  args: {
+    message: "Upload in progress...",
+    variant: "upload",
+    position: "bottom-right",
+    dismissible: false,
+  },
+};
+
+// Auto-dismissing alert example
+export const AutoDismiss = {
+  ...Template,
+  args: {
+    message: "I will auto-dismiss in 3 seconds",
+    variant: "info",
+    position: "top-right",
+    dismissible: false,
   },
 };

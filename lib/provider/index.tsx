@@ -1,7 +1,6 @@
 import * as React from "react";
 import "../styles/index.css";
-import { AlertProvider } from "../modules/alert/alert-provider";
-
+import { AlertProvider } from "../modules/alert/provider";
 export interface ProviderProps {
   children: React.ReactNode;
 }

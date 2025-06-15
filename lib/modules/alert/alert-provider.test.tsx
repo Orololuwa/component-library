@@ -1,6 +1,6 @@
 import { render, screen, act } from "@testing-library/react";
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
-import { AlertProvider } from "./alert-provider";
+import { AlertProvider } from "./provider";
 import useAlert from "./use-alert";
 import React from "react";
 
