@@ -21,8 +21,8 @@ const ModalContainer = styled.div<ModalContainerProps>`
   transform: translate(-50%, -50%)
     scale(${({ $isOpen }) => ($isOpen ? 1 : 0.95)});
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: #213547;
+  background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -34,10 +34,10 @@ const ModalContainer = styled.div<ModalContainerProps>`
   transition: all 0.3s ease-in-out;
   z-index: 1000;
 
-  @media (prefers-color-scheme: light) {
-    color: #213547;
-    background-color: #ffffff;
-  }
+  /* @media (prefers-color-scheme: dark) {
+  background-color: #242424;
+  color: rgba(255, 255, 255, 0.87);
+  } */
 `;
 
 const Overlay = styled.div<{ $isOpen: boolean }>`
@@ -53,9 +53,9 @@ const Overlay = styled.div<{ $isOpen: boolean }>`
   visibility: ${({ $isOpen }) => ($isOpen ? "visible" : "hidden")};
   transition: opacity 0.3s ease-in-out;
 
-  @media (prefers-color-scheme: dark) {
+  /* @media (prefers-color-scheme: dark) {
     background-color: rgba(255, 255, 255, 0.5);
-  }
+  } */
 `;
 
 const ModalContent = styled.div`

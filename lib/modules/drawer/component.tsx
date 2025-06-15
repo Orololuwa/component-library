@@ -18,8 +18,8 @@ interface DrawerContainerProps {
 const DrawerContainer = styled.div<DrawerContainerProps>`
   position: fixed;
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: #213547;
+  background-color: #ffffff;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
   transition: transform 0.3s ease-in-out;
@@ -64,12 +64,10 @@ const DrawerContainer = styled.div<DrawerContainerProps>`
       default:
         return "";
     }
-  }}
-
-  @media (prefers-color-scheme: light) {
-    color: #213547;
-    background-color: #ffffff;
-  }
+  }}/* @media (prefers-color-scheme: dark) {
+  background-color: #242424;
+  color: rgba(255, 255, 255, 0.87);
+  } */
 `;
 
 const Overlay = styled.div<{ $isOpen: boolean }>`
@@ -85,9 +83,9 @@ const Overlay = styled.div<{ $isOpen: boolean }>`
   visibility: ${({ $isOpen }) => ($isOpen ? "visible" : "hidden")};
   transition: opacity 0.3s ease-in-out;
 
-  @media (prefers-color-scheme: dark) {
+  /* @media (prefers-color-scheme: dark) {
     background-color: rgba(255, 255, 255, 0.5);
-  }
+  } */
 `;
 
 const DrawerContent = styled.div`
