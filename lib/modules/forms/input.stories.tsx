@@ -55,56 +55,47 @@ export default meta;
 type Story = StoryObj<typeof Input>;
 
 export const Default: Story = {
-  render: (args) => {
-    return <Input {...args} placeholder="Type here..." $label="Input Label" />;
+  render: () => {
+    return <Input placeholder="Type here..." $label="Input Label" />;
   },
 };
 
 export const Sizes: Story = {
-  render: (args) => {
+  render: () => {
     return (
       <div className="space-y-4">
         <Input
           $label="Extra Small"
           $size="xs"
           placeholder="Extra small input"
-          {...args}
         />
-        <Input $label="Small" $size="sm" placeholder="Small input" {...args} />
-        <Input
-          $label="Medium"
-          $size="md"
-          placeholder="Medium input"
-          {...args}
-        />
-        <Input $label="Large" $size="lg" placeholder="Large input" {...args} />
+        <Input $label="Small" $size="sm" placeholder="Small input" />
+        <Input $label="Medium" $size="md" placeholder="Medium input" />
+        <Input $label="Large" $size="lg" placeholder="Large input" />
       </div>
     );
   },
 };
 
 export const Icons: Story = {
-  render: (args) => {
+  render: () => {
     return (
       <div className="space-y-4">
         <Input
           $label="Search"
           $leftIcon={<LuSearch />}
           placeholder="Search users..."
-          {...args}
         />
         <Input
           $label="Username"
           $rightIcon={<LuUser />}
           placeholder="Enter username"
-          {...args}
         />
         <Input
           $label="Password"
           $leftIcon={<LuLock />}
           $rightIcon={<LuEye />}
           type="password"
-          {...args}
         />
       </div>
     );
@@ -112,33 +103,25 @@ export const Icons: Story = {
 };
 
 export const Password: Story = {
-  render: (args) => {
-    return (
-      <PasswordInput
-        {...args}
-        placeholder="Type here..."
-        $label="Input Label"
-      />
-    );
+  render: () => {
+    return <PasswordInput placeholder="Type here..." $label="Input Label" />;
   },
 };
 
 export const WithError: Story = {
-  render: (args) => {
+  render: () => {
     return (
       <div className="space-y-4">
         <Input
           $label="Email"
           $error="Please enter a valid email address"
           placeholder="Enter your email"
-          {...args}
         />
         <Input
           $label="Password"
           $isError={true}
           placeholder="Enter password"
           type="password"
-          {...args}
         />
       </div>
     );
@@ -146,49 +129,36 @@ export const WithError: Story = {
 };
 
 export const States: Story = {
-  render: (args) => {
+  render: () => {
     return (
       <div className="space-y-4">
-        <Input $label="Normal State" placeholder="Normal input" {...args} />
-        <Input
-          $label="Disabled State"
-          placeholder="Disabled input"
-          disabled
-          {...args}
-        />
-        <Input $label="With Value" defaultValue="Pre-filled value" {...args} />
-        <Input
-          $label="Required Field"
-          placeholder="Required input"
-          required
-          {...args}
-        />
+        <Input $label="Normal State" placeholder="Normal input" />
+        <Input $label="Disabled State" placeholder="Disabled input" disabled />
+        <Input $label="With Value" defaultValue="Pre-filled value" />
+        <Input $label="Required Field" placeholder="Required input" required />
       </div>
     );
   },
 };
 
 export const CustomFocusColor: Story = {
-  render: (args) => {
+  render: () => {
     return (
       <div className="space-y-4">
         <Input
           $label="Green Focus"
           $focusColor="#10b981"
           placeholder="Focus me for green ring"
-          {...args}
         />
         <Input
           $label="Purple Focus"
           $focusColor="#8b5cf6"
           placeholder="Focus me for purple ring"
-          {...args}
         />
         <Input
           $label="Orange Focus"
           $focusColor="#f59e0b"
           placeholder="Focus me for orange ring"
-          {...args}
         />
       </div>
     );
@@ -196,12 +166,12 @@ export const CustomFocusColor: Story = {
 };
 
 export const WithoutLabel: Story = {
-  render: (args) => {
+  render: () => {
     return (
       <div className="space-y-4">
-        <Input placeholder="Input without label" {...args} />
-        <Input placeholder="Another input without label" $size="sm" {...args} />
-        <Input placeholder="Large input without label" $size="lg" {...args} />
+        <Input placeholder="Input without label" />
+        <Input placeholder="Another input without label" $size="sm" />
+        <Input placeholder="Large input without label" $size="lg" />
       </div>
     );
   },
