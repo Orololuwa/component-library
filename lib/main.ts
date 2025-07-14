@@ -8,3 +8,5 @@ export { useAlert };
 
 export * from "./modules/drawer";
 export * from "./modules/modal";
+
+export * from "./modules/forms";
