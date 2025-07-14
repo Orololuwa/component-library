@@ -14,6 +14,7 @@ export default defineConfig({
       insertTypesEntry: true,
       rollupTypes: true,
       tsconfigPath: resolve(__dirname, "tsconfig.build.json"),
+      exclude: ["**/*.stories.*", "**/*.test.*", "**/*.spec.*"],
     }),
   ],
   css: {
@@ -23,9 +24,13 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: resolve(__dirname, "lib/main.ts"),
+      entry: {
+        index: resolve(__dirname, "lib/main.ts"),
+        modal: resolve(__dirname, "lib/modules/modal/index.tsx"),
+        drawer: resolve(__dirname, "lib/modules/drawer/index.tsx"),
+      },
       formats: ["es"],
-      fileName: "index",
+      fileName: (_, entryName) => `${entryName}.js`,
     },
     copyPublicDir: false,
     rollupOptions: {

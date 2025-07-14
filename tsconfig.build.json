@@ -24,5 +24,17 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["lib"]
+  "include": ["lib"],
+  "exclude": [
+    "lib/**/*.stories.tsx",
+    "lib/**/*.stories.ts",
+    "lib/**/*.test.tsx",
+    "lib/**/*.test.ts",
+    "lib/**/*.spec.tsx",
+    "lib/**/*.spec.ts",
+    "**/*.stories.*",
+    "**/*.test.*",
+    "**/*.spec.*",
+    "node_modules"
+  ]
 }

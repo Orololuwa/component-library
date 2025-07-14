@@ -9,6 +9,24 @@
   "files": [
     "dist"
   ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./modal": {
+      "import": "./dist/modal.js",
+      "types": "./dist/modal.d.ts"
+    },
+    "./drawer": {
+      "import": "./dist/drawer.js",
+      "types": "./dist/drawer.d.ts"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Orololuwa/component-library.git"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc --p ./tsconfig.build.json && vite build",
