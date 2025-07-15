@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
-import CountryInput, { Option } from "./country-input";
+import CountryAutoComplete, { Option } from "./country-autocomplete";
 
-const meta: Meta<typeof CountryInput> = {
-  title: "Forms/CountryInput",
-  component: CountryInput,
+const meta: Meta<typeof CountryAutoComplete> = {
+  title: "Forms/Country Auto-Complete Input",
+  component: CountryAutoComplete,
   parameters: {
     layout: "centered",
     docs: {
@@ -40,11 +40,11 @@ const meta: Meta<typeof CountryInput> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof CountryInput>;
+type Story = StoryObj<typeof CountryAutoComplete>;
 
 export const Default: Story = {
   render: () => {
-    return <CountryInput />;
+    return <CountryAutoComplete />;
   },
 };
 
@@ -52,9 +52,9 @@ export const Sizes: Story = {
   render: () => {
     return (
       <div className="space-y-4">
-        <CountryInput size="sm" />
-        <CountryInput size="md" />
-        <CountryInput size="lg" />
+        <CountryAutoComplete size="sm" />
+        <CountryAutoComplete size="md" />
+        <CountryAutoComplete size="lg" />
       </div>
     );
   },
@@ -71,7 +71,7 @@ export const GetValue: Story = {
 
     return (
       <div className="space-y-4">
-        <CountryInput
+        <CountryAutoComplete
           value={selectedCountry}
           onChange={(option) => {
             if (option) handleChange(option);

@@ -3,7 +3,7 @@ import LanguageAutocomplete, { Language } from "./language-autocomplete";
 import { useState } from "react";
 
 const meta: Meta<typeof LanguageAutocomplete> = {
-  title: "Forms/LanguageAutocomplete",
+  title: "Forms/Language Auto-Complete Input",
   component: LanguageAutocomplete,
   parameters: {
     layout: "centered",
