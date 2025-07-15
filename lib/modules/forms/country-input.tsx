@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import { countries } from "../../utils/country-data";
 
-export type Option = Omit<(typeof countries)[0], "currency">;
+export type Option = (typeof countries)[0];
 
 interface CountryAutocompleteProps {
   onChange?: (country: Option | null) => void;

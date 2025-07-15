@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
-import CountryInput from "./country-input";
+import CountryInput, { Option } from "./country-input";
 
 const meta: Meta<typeof CountryInput> = {
   title: "Forms/CountryInput",
@@ -55,6 +55,35 @@ export const Sizes: Story = {
         <CountryInput size="sm" />
         <CountryInput size="md" />
         <CountryInput size="lg" />
+      </div>
+    );
+  },
+};
+
+export const GetValue: Story = {
+  render: () => {
+    const [selectedCountry, setSelectedCountry] = useState<Option | null>(null);
+
+    const handleChange = (country: Option) => {
+      setSelectedCountry(country);
+      console.log("Selected Country:", country);
+    };
+
+    return (
+      <div className="space-y-4">
+        <CountryInput
+          value={selectedCountry}
+          onChange={(option) => {
+            if (option) handleChange(option);
+          }}
+          size="md"
+        />
+        {selectedCountry && (
+          <div>
+            <h3>Selected Country:</h3>
+            <pre>{JSON.stringify(selectedCountry, null, 2)}</pre>
+          </div>
+        )}
       </div>
     );
   },
