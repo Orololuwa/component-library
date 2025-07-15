@@ -5,7 +5,7 @@ import useAlert from "./use-alert";
 import React from "react";
 
 const meta: Meta = {
-  title: "Components/Alert",
+  title: "Overlay/Alert",
   component: Alert,
   decorators: [(Story) => <AlertProvider>{Story()}</AlertProvider>],
   parameters: {

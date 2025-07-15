@@ -3,7 +3,7 @@ import { Drawer } from "./component";
 import { useState } from "react";
 
 const meta: Meta<typeof Drawer> = {
-  title: "Components/Drawer",
+  title: "Overlay/Drawer",
   component: Drawer,
   parameters: {
     layout: "centered",
