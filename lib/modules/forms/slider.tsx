@@ -1,4 +1,3 @@
-import { useMemo } from "react";
 import styled from "styled-components";
 
 interface RangeSliderProps {
@@ -101,32 +100,6 @@ const StyledSlider = styled.input`
   }
 `;
 
-const FillBar = styled.div<{ fillPercentage: number }>`
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: 0;
-  height: 0.5rem;
-  background-color: #3b82f6;
-  border-radius: 0.5rem 0 0 0.5rem;
-  z-index: 10;
-  pointer-events: none;
-  width: ${(props) => props.fillPercentage}%;
-`;
-
-const EmptyBar = styled.div<{ fillPercentage: number }>`
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 0;
-  height: 0.5rem;
-  background-color: #e5e7eb;
-  border-radius: 0 0.5rem 0.5rem 0;
-  z-index: 10;
-  pointer-events: none;
-  width: ${(props) => 100 - props.fillPercentage}%;
-`;
-
 export default function RangeSlider(props: RangeSliderProps) {
   const generateTickMarks = (
     min: number,
@@ -145,10 +118,6 @@ export default function RangeSlider(props: RangeSliderProps) {
       };
     });
   };
-
-  const fillPercentage = useMemo(() => {
-    return ((props.value - props.min) / (props.max - props.min)) * 100;
-  }, [props.value, props.min, props.max]);
 
   return (
     <Container>
